@@ -1,8 +1,12 @@
 version: '3.7'
 services:
   conda:
-    build: .
+    build:
+      context: .
+      args:
+        NOTEBOOK_DIR: /code/notebooks
     volumes:
-      - ./notebooks:/notebooks
+      - .:/code
     ports:
       - 8888:8888
+    working_dir: /code
